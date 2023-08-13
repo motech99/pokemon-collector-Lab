@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
-pokemons = [
-    {'name': 'Squirtle', 'type': 'water', 'description': 'Aqua-shell mischief', 'age': 2},
-    {'name': 'Charmander', 'type': 'fire', 'description': 'Fiery-tailed reptile', 'age': 4},
-]
+# pokemons = [
+#     {'name': 'Squirtle', 'type': 'water', 'description': 'Aqua-shell mischief', 'age': 2},
+#     {'name': 'Charmander', 'type': 'fire', 'description': 'Fiery-tailed reptile', 'age': 4},
+# ]
 
 # Create your views here.
 def home(request):
