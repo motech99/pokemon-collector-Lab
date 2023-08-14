@@ -16,13 +16,14 @@
       <div class="nav-wrapper">
         <ul>
           <li>
-            <a href="/" class="left brand-logo hover-class">Pokemon Collector</a>
+            <a href="{% url 'home' %}" class="left brand-logo hover-class">Pokemon Collector</a>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/2052px-Pok%C3%A9_Ball_icon.svg.png" class="icon" alt="pokemon ball logo">
         </li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/pokemons">View All My Pokemons</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'pokemons_create' %}">Add a Pokemon</a></li>
+          <li><a href="{% url 'index' %}">View All My Pokemons</a></li>
         </ul>
       </div>
     </nav>
