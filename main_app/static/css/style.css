@@ -2,8 +2,9 @@
 
 * {
     font-family: 'ROYAL MOSCOW', sans-serif;
-                                                
+
 }
+
 body {
     display: flex;
     min-height: 100vh;
@@ -69,3 +70,17 @@ body {
     background: rgb(37, 74, 241);
     color: aliceblue;
   }
+
+.datepicker-date-display {
+  background-color: rgb(37, 74, 241);
+}
+.datepicker-calendar-container {
+  font-family: 'ROYAL MOSCOW', sans-serif;
+}
+
+#id_date
+ {
+  font-family: 'ROYAL MOSCOW', sans-serif;
+}
+
+ 

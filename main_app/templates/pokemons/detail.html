@@ -1,23 +1,79 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1>Pokemon Details</h1>
 
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ pokemon.name }}</span>
-    <p>Type: {{ pokemon.type }}</p>
-    <p>Description: {{ pokemon.description }}</p>
-    {% if pokemon.age > 0 %}
-      <p>Age: {{ pokemon.age }}</p>
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ pokemon.name }}</span>
+        <p>Type: {{ pokemon.type }}</p>
+        <p>Description: {{ pokemon.description }}</p>
+        {% if pokemon.age > 0 %}
+        <p>Age: {{ pokemon.age }}</p>
+        {% else %}
+        <p>Age: Baby Pokémon!</p>
+        {% endif %}
+      </div>
+      <div class="card-action">
+        <a
+          class="blue-text text-darken-2"
+          href="{% url 'pokemons_update' pokemon.id %}"
+          >Edit</a
+        >
+        <a
+          class="blue-text text-darken-2"
+          href="{% url 'pokemons_delete' pokemon.id %}"
+          >Delete</a
+        >
+      </div>
+    </div>
+  </div>
+  <!-- New Markup Below -->
+  <div class="col s6">
+    <form action="{% url 'add_exercise' pokemon.id %}" method="POST">
+      {% csrf_token %} {{ exercise_form.as_p }}
+      <input type="submit" class="button-1" value="Add Training" />
+    </form>
+    <br>
+    {% if pokemon.training_for_today %}
+      <div class="card-panel teal-text center-align">{{pokemon.name}} has been trained today</div>
     {% else %}
-      <p>Age: Baby Pokémon!</p>
+      <div class="card-panel red-text center-align">{{pokemon.name}} hasn't trained today!</div>
     {% endif %}
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Training</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for exercise in pokemon.exercise_set.all %}
+        <tr>
+          <td>{{exercise.date}}</td>
+          <td>{{exercise.get_training_display}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
-  <div class="card-action">
-    <a class="blue-text text-darken-2" href="{% url 'pokemons_update' pokemon.id %}">Edit</a>
-    <a class="blue-text text-darken-2" href="{% url 'pokemons_delete' pokemon.id %}">Delete</a>
-  </div>
+  <!-- New Markup Above -->
 </div>
+<script>
+  const dateEl = document.getElementById("id_date");
+  // M is Materialize's global variable
+  M.Datepicker.init(dateEl, {
+    format: "yyyy-mm-dd",
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true,
+
+  });
+
+  const selectEl = document.getElementById('id_training')
+  M.FormSelect.init(selectEl);
+
+</script>
 
 {% endblock %}
