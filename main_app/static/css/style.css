@@ -1,86 +1,92 @@
-@import url('https://fonts.cdnfonts.com/css/royal-moscow');
+@import url("https://fonts.cdnfonts.com/css/royal-moscow");
 
 * {
-    font-family: 'ROYAL MOSCOW', sans-serif;
-
+  font-family: "ROYAL MOSCOW", sans-serif;
 }
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  
-  main {
-    flex: 1 0 auto;
-  }
-  
-  footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
+main {
+  flex: 1 0 auto;
+}
 
-  nav,
-  .page-footer {
-    background: rgb(59,76,202);
-    background: linear-gradient(176deg, rgba(59,76,202,1) 0%, rgba(0,0,0,1) 100%);
-  }
+footer.page-footer {
+  padding-top: 0;
+  text-align: right;
+}
 
-  .brand-logo {
-    margin: 0;
-  }
-  
-  .icon {
-    height: 60px;
-    position: absolute;
-    left: 250px;
-  }
+nav,
+.page-footer {
+  background: rgb(59, 76, 202);
+  background: linear-gradient(
+    176deg,
+    rgba(59, 76, 202, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
 
-  /* CSS */
-  .button-1 {
-    background: rgb(255, 222, 0);
-    border-radius: 8px;
-    border-style: none;
-    box-sizing: border-box;
-    color: #5e5b5b;
-    cursor: pointer;
-    display: inline-block;
-    height: 40px;
+.brand-logo {
+  margin: 0;
+}
 
-    font-family: 'ROYAL MOSCOW', sans-serif;
-    line-height: 20px;
-    list-style: none;
-    margin: 0;
-    outline: none;
-    padding: 10px 16px;
-    font-size: 18px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    transition: color 100ms;
-    vertical-align: baseline;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-  .button-1:hover,
-  .button-1:focus {
-    background: rgb(37, 74, 241);
-    color: aliceblue;
-  }
+.icon {
+  height: 60px;
+  position: absolute;
+  left: 250px;
+}
+
+/* CSS */
+.button-1 {
+  background: rgb(255, 222, 0);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #5e5b5b;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+
+  font-family: "ROYAL MOSCOW", sans-serif;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  font-size: 18px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background: rgb(37, 74, 241);
+  color: aliceblue;
+}
 
 .datepicker-date-display {
   background-color: rgb(37, 74, 241);
 }
 .datepicker-calendar-container {
-  font-family: 'ROYAL MOSCOW', sans-serif;
+  font-family: "ROYAL MOSCOW", sans-serif;
 }
 
-#id_date
- {
-  font-family: 'ROYAL MOSCOW', sans-serif;
+#id_date {
+  font-family: "ROYAL MOSCOW", sans-serif;
+}
+.select-wrapper input.select-dropdown {
+  font-family: "ROYAL MOSCOW", sans-serif;
 }
 
- 
+input[type="text"] {
+  font-family: "ROYAL MOSCOW", sans-serif;
+}

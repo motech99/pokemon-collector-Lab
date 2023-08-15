@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if object %}
+    <h1>Edit <span class="yellow-text text-darken-2">{{object.name}}</span></h1>
+  {% else %}
+    <h1>Add Trainer</h1>
+  {% endif %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <table class="text-style">
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="button-1">
+  </form>
+  <script>
+    const selectEl = document.getElementById('id_team');
+    M.FormSelect.init(selectEl);
+  </script>
+{% endblock %}

@@ -5,16 +5,36 @@ from datetime import date
 TRAINING = (
     ('S', 'Stamina'),
     ('D', 'Defense'),
-    ('B', 'Bonding')
+    ('B', 'Bonding'),
  )
+TEAMS = (
+    ('V', 'Valor'),
+    ('M', 'Mystic'),
+    ('I', 'Instinct'),
+)
 
 # Create your models here.
+class Trainer(models.Model):
+    name = models.CharField(max_length=50)
+    team = models.CharField(
+        max_length=1,
+        choices=TEAMS,
+        default=TEAMS[0][0]
+    )
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('trainers_detail', kwargs={'pk': self.id})
+
+
 class Pokemon(models.Model):
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=50)
     description = models.TextField(max_length=100)
     age = models.IntegerField()
-
+    trainers = models.ManyToManyField(Trainer)
 
     def __str__(self):
         return f'{self.name} ({self.id})'
@@ -23,19 +43,17 @@ class Pokemon(models.Model):
         return reverse('detail', kwargs={'pokemon_id': self.id})
     
     def trained_for_today(self):
-        return self.training_set.filter(date=date.today()).count() >= len(TRAINING)
-
+        return self.exercise_set.filter(date=date.today()).count() >= len(TRAINING)
     
-
 class Exercise(models.Model):
     date = models.DateField('training date')
     training = models.CharField(
         max_length=1,
         choices=TRAINING,
         default=TRAINING[0][0]
-        )
+     )
     pokemon = models.ForeignKey(
-        Pokemon,
+        'Pokemon',
         on_delete=models.CASCADE
     )
 
