@@ -10,6 +10,7 @@ urlpatterns = [
     path('pokemons/<int:pk>/update/', views.PokemonUpdate.as_view(), name='pokemons_update'),
     path('pokemons/<int:pk>/delete/', views.PokemonDelete.as_view(), name='pokemons_delete'),
     path('pokemons/<int:pokemon_id>/add_exercise/', views.add_exercise, name='add_exercise'),
+    path('pokemons/<int:pokemon_id>/add_photo/', views.add_photo, name='add_photo'),
     path('pokemons/<int:pokemon_id>/assoc_trainer/<int:trainer_id>/', views.assoc_trainer, name='assoc_trainer'),
     path('pokemons/<int:pokemon_id>/unassoc_trainer/<int:trainer_id>/', views.unassoc_trainer, name='unassoc_trainer'),
     path('trainers/', views.TrainerList.as_view(), name='trainers_index'),
@@ -17,4 +18,5 @@ urlpatterns = [
     path('trainers/create/', views.TrainerCreate.as_view(), name='trainers_create'),
     path('trainers/<int:pk>/update/', views.TrainerUpdate.as_view(), name='trainers_update'),
     path('trainers/<int:pk>/delete/', views.TrainerDelete.as_view(), name='trainer_delete'),
+
 ]

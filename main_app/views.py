@@ -1,7 +1,10 @@
+import os
+import uuid
+import boto3
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Pokemon, Trainer
+from .models import Pokemon, Trainer, Photo
 from .forms import ExerciseForm
 
 # Create your views here.
@@ -71,4 +74,19 @@ def assoc_trainer(request, pokemon_id, trainer_id):
 
 def unassoc_trainer(request, pokemon_id, trainer_id):
     Pokemon.objects.get(id=pokemon_id).trainers.remove(trainer_id)
+    return redirect('detail', pokemon_id=pokemon_id)
+
+def add_photo(request, pokemon_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            Photo.objects.create(url=url, pokemon_id=pokemon_id)
+        except Exception as e:
+            print('An error occurred uploading file to S3')
+            print(e)
     return redirect('detail', pokemon_id=pokemon_id)
