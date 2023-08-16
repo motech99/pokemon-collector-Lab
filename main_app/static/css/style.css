@@ -91,3 +91,7 @@ input[type="text"] {
   font-family: "ROYAL MOSCOW", sans-serif;
 }
 
+.img-size{
+  height: 250px;
+  width: 250px;
+}

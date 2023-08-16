@@ -7,6 +7,9 @@
   <div class="card">
     <div class="card-content">
       <span class="card-title">{{ pokemon.name }}</span>
+      {% for photo in pokemon.photo_set.all %}
+      <img class="responsive-img card-panel img-size" src="{{ photo.url }}">
+  {% endfor %}
       <p>Type: {{ pokemon.type }}</p>
       <p>Description: {{ pokemon.description }}</p>
       {% if pokemon.age > 0 %}
