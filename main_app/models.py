@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse 
 from datetime import date
+from django.contrib.auth.models import User
 
 TRAINING = (
     ('S', 'Stamina'),
@@ -36,6 +37,7 @@ class Pokemon(models.Model):
     description = models.TextField(max_length=100)
     age = models.IntegerField()
     trainers = models.ManyToManyField(Trainer)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name} ({self.id})'
